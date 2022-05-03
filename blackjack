@@ -1,0 +1,80 @@
+from random import randint
+from os import system
+
+
+while True:
+
+        deck = {'2': [4, 2], '3': [4, 3], '4': [4, 4], '5': [4, 5], '6': [4, 6], '7': [4, 7], '8': [4, 8], '9': [4, 9],
+                '10': [4, 10], 'King': [4, 10], 'Queen': [4, 10], 'Jack': [4, 10],
+                'Ace': [4, 11]}
+        cards = [card for card in deck.keys()]
+        comp = {}
+        user = {}
+        for i in range(2):
+            a = cards[randint(0, len(cards)) - 1]
+            b = cards[randint(0, len(cards)) - 1]
+            deck[a][0] -= 1
+            deck[b][0] -= 1
+            user[a] = deck[a][1]
+            comp[b] = deck[b][1]
+        while True:
+            if len(user.keys())!=2:
+                a = cards[randint(0, len(cards)) - 1]
+                deck[a][0] -= 1
+                user[a] = deck[a][1]
+            elif len(comp.keys())!=2:
+                b = cards[randint(0, len(cards)) - 1]
+                deck[b][0] -= 1
+                comp[b] = deck[b][1]
+            else:
+                break
+        print('\nUser has:', list(user.keys())[0], 'and', list(user.keys())[1] + ". It's",
+              list(user.values())[0] + list(user.values())[1], 'points')
+        print('Computer has:', list(comp.keys())[0], 'and unknown card' + ". It's", list(comp.values())[0], 'points')
+        if list(comp.values())[0] + list(comp.values())[1] < 17:
+            b = cards[randint(0, len(cards)) - 1]
+            deck[b][0] -= 1
+            comp[b] = deck[b][1]
+        while True:
+            user_score_count = 0
+            comp_score_count = 0
+            for i in user.values():
+                user_score_count = user_score_count + i
+            for i in comp.values():
+                comp_score_count = comp_score_count + i
+            if user_score_count > 21:
+                if 'Ace' in user:
+                    user['Ace'] = 1
+                user_score_count = 0
+
+                for i in user.values():
+                    user_score_count = user_score_count + i
+                print('Computer cards:', ' '.join(list(comp.keys())))
+                print('User:', user_score_count, 'vs', 'Computer:', comp_score_count, '\n' + 'Computer won')
+                break
+            choice = input('Hit or stand? \n')
+
+            if choice == 'hit':
+                a = cards[randint(0, len(cards)) - 1]
+                deck[a][0] -= 1
+                user[a] = deck[a][1]
+                x = 0
+                for i in user.values():
+                    x = x + i
+                print('\nUser has:', ' '.join(list(user.keys()))+ ". It's", x, 'points')
+                continue
+            else:
+                if user_score_count > comp_score_count:
+                    print('Computer cards:', ' '.join(list(comp.keys())), '' + '\n' + 'User cards:',
+                          ' '.join(list(user.keys())))
+                    print('User:', user_score_count, 'vs', 'Computer:', comp_score_count, '\n' + "User won!")
+                elif user_score_count == comp_score_count:
+                    print('Computer cards:', ' '.join(list(comp.keys())), '' + '\n' + 'User cards:',
+                          ' '.join(list(user.keys())))
+                    print('User:', user_score_count, 'vs', 'Computer:', comp_score_count, '\n' + "It's draw!")
+                else:
+                    print('Computer cards:', ' '.join(list(comp.keys())), '' + '\n' + 'User cards:',
+                          ' '.join(list(user.keys())))
+                    print('User:', user_score_count, 'vs', 'Computer:', comp_score_count, '\n' + "Computer won!")
+                break
+
