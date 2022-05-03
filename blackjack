@@ -1,4 +1,5 @@
 from random import randint
+from os import system
 
 
 while True:
@@ -60,6 +61,12 @@ while True:
                 x = 0
                 for i in user.values():
                     x = x + i
+                if x>21:
+                    if 'Ace' in user:
+                        user['Ace']=1
+                        x=0
+                        for i in user.values():
+                            x = x + i
                 print('\nUser has:', ' '.join(list(user.keys()))+ ". It's", x, 'points')
                 continue
             else:
