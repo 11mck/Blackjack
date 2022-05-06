@@ -9,8 +9,8 @@ If user hit blackjack the immadiately won
 If both, user and dealer, have over 21 points program is going to push 
 
 #Points
-Ace = 1 or 11 points
-, King = 10 points
+Ace = 1 or 11 points, 
+King = 10 points
 , Queen = 10 points
 , Jack = 10 points 
 , 10 = 10 points
