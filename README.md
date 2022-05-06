@@ -4,8 +4,11 @@ Program random choose 2 cards for user and 2 cards for dealer. User sees all of 
 
 #Features
 If user has Ace in hand and his points are above 21, program will count ace as 1 instead of 11
+
 If dealer's score is lower than 17, dealer will take cards untill he will get 17 point
+
 If user hit blackjack the immadiately won
+
 If both, user and dealer, have over 21 points program is going to push 
 
 #Points
