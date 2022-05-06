@@ -3,6 +3,7 @@ BlackJack game made in python
 Program random choose 2 cards for user and 2 cards for dealer. User sees all of his cards and only the first dealer's card. User can "hit" to get another card or "stand" to finish the round. Then program shows who won.
 
 #Features
+
 If user has Ace in hand and his points are above 21, program will count ace as 1 instead of 11
 
 If dealer's score is lower than 17, dealer will take cards untill he will get 17 point
